@@ -12,7 +12,7 @@ describe('Button Component', () => {
     const button = screen.getByRole('button', { name: /click me/i });
     
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('btn-primary');
+    expect(button).toHaveClass('custom-class btn-primary');
     expect(button).not.toBeDisabled();
   });
 

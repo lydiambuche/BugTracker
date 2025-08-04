@@ -1,9 +1,7 @@
-// jest.config.js - Root Jest configuration file
-
+/** @type {import('jest').Config} */
 module.exports = {
-  // Base configuration for all tests
   projects: [
-    // Server-side tests configuration
+    // ✅ Server-side test config
     {
       displayName: 'server',
       testEnvironment: 'node',
@@ -17,20 +15,20 @@ module.exports = {
         '!**/node_modules/**',
       ],
     },
-    
-    // Client-side tests configuration
+
+    // ✅ Client-side test config
     {
       displayName: 'client',
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/client/src/**/*.test.{js,jsx}'],
       moduleFileExtensions: ['js', 'jsx', 'json'],
+      setupFilesAfterEnv: ['<rootDir>/client/src/setupTests.js'], // ← double-check this path!
+      transform: {
+        '^.+\\.(js|jsx)$': 'babel-jest',
+      },
       moduleNameMapper: {
         '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
         '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/client/src/tests/__mocks__/fileMock.js',
-      },
-      setupFilesAfterEnv: ['<rootDir>/client/src/tests/setup.js'],
-      transform: {
-        '^.+\\.(js|jsx)$': 'babel-jest',
       },
       coverageDirectory: '<rootDir>/coverage/client',
       collectCoverageFrom: [
@@ -40,8 +38,8 @@ module.exports = {
       ],
     },
   ],
-  
-  // Global configuration
+
+  // ✅ Global Jest config
   verbose: true,
   collectCoverage: true,
   coverageReporters: ['text', 'lcov', 'clover', 'html'],
@@ -54,4 +52,4 @@ module.exports = {
     },
   },
   testTimeout: 10000,
-}; 
+};

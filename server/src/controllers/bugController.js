@@ -1,4 +1,3 @@
-// src/controllers/bugController.js
 import Bug from '../models/bug.js';
 
 // Create a new bug

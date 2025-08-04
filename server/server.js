@@ -1,10 +1,10 @@
-// server.js
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import authRouter from './src/routes/authRoutes.js';
 import bugRoutes from './src/routes/bugRoutes.js';
+import dashboardRoutes from './src/routes/dashboard.js';
 
 dotenv.config();
 connectDB();
@@ -20,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter)
 app.use('/api/bugs', bugRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // route to test
 app.get('/', (req, res) => {
